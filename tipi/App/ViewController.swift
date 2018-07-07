@@ -8,20 +8,76 @@
 
 import UIKit
 
-// in the Name
-// started 11:29 am july 7 2016 SE>commendant>&&ret#2929**
+
 class ViewController: UIViewController {
 
+    var userActivities = [UserActivity]()
+    
+    
+    func setup(){
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(UINib(nibName: "UserActivitiesCell", bundle: nil) ,forCellWithReuseIdentifier: "Cell")
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        setup()
+        
+        LoginService.sharedInstance.login(){ [weak self] in
+            self?.loadUserActivities()
+        }
+        
+        
     }
+    
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+//MARK:Apies
+extension ViewController{
+    
+    func updateUi(list: [UserActivity]){
+        userActivities.append(contentsOf: list)
+        collectionView.reloadData()
     }
+    
+    func loadUserActivities() {
+        LoginService.sharedInstance.getList{ dto in
+            self.updateUi(list: dto.list)
+        }
+    }
+}
 
-
+//MARK: CollectionView
+extension ViewController:UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+        return userActivities.count
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath as IndexPath) as! UserActivitiesCell
+        
+        let activity = userActivities[indexPath.item]
+        cell.activity = activity
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: 400)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    }
+    
+    
 }
 
