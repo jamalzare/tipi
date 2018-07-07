@@ -54,14 +54,38 @@
 		8988C17B20F09B830079193C /* tipi */ = {
 			isa = PBXGroup;
 			children = (
+				8988C19020F09D290079193C /* Refrences */,
+				8988C18E20F09CEB0079193C /* App */,
+				8988C18F20F09D150079193C /* DAL */,
+			);
+			path = tipi;
+			sourceTree = "<group>";
+		};
+		8988C18E20F09CEB0079193C /* App */ = {
+			isa = PBXGroup;
+			children = (
 				8988C17C20F09B830079193C /* AppDelegate.swift */,
 				8988C17E20F09B830079193C /* ViewController.swift */,
 				8988C18020F09B830079193C /* Main.storyboard */,
 				8988C18320F09B830079193C /* Assets.xcassets */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		8988C18F20F09D150079193C /* DAL */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DAL;
+			sourceTree = "<group>";
+		};
+		8988C19020F09D290079193C /* Refrences */ = {
+			isa = PBXGroup;
+			children = (
 				8988C18520F09B830079193C /* LaunchScreen.storyboard */,
 				8988C18820F09B840079193C /* Info.plist */,
 			);
-			path = tipi;
+			path = Refrences;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
