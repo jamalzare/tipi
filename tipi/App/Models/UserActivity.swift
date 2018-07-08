@@ -9,6 +9,22 @@
 import Foundation
 import SwiftyJSON
 
+class Attender: Model {
+    
+    var userKey = ""
+    var attendedAt: String?
+    var avatar:String{
+        return "http://stg.api.tipi.me/cdn/user/\(userKey)/savatar.jpg"
+    }
+    
+    required init(json: JSON) {
+        super.init(json: json)
+        
+        userKey = json["user_key"].stringValue
+        attendedAt = json["attended_at"].stringValue
+    }
+}
+
 class UserActivity: Model{
    
     var docKey: String = ""
@@ -19,8 +35,11 @@ class UserActivity: Model{
     var image: String?
     var at: String?
     var address:String?
-    var hasAttend = false
-    var attends = [String]()
+    var hasAttended = false
+    var hasAttender: Bool{
+        return attendees.count > 0
+    }
+    var attendees = [Attender]()
     
     required init(json: JSON) {
         super.init(json: json)
@@ -33,6 +52,7 @@ class UserActivity: Model{
         
         at = json["at"].stringValue
         address = json["address"].stringValue
-        hasAttend = json["has_attended"].boolValue
+        hasAttended = json["has_attended"].boolValue
+        attendees = json["attendees"].arrayValue.map{ Attender(json: $0)}
     }
 }

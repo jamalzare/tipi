@@ -9,7 +9,7 @@
 import UIKit
 
 
-class ViewController: UIViewController {
+class UserActivityViewController: UIViewController {
 
     var userActivities = [UserActivity]()
     
@@ -17,8 +17,10 @@ class ViewController: UIViewController {
     func setup(){
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: "UserActivitiesCell", bundle: nil) ,forCellWithReuseIdentifier: "Cell")
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        collectionView.register(AppBundle.UserActiviyCellNib,forCellWithReuseIdentifier: "Cell")
+        collectionView.contentInset = UIEdgeInsets.zero
+        
+        
     }
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -26,18 +28,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        
-        LoginService.sharedInstance.login(){ [weak self] in
-            self?.loadUserActivities()
-        }
-        
+        startApies()
         
     }
     
 }
 
 //MARK:Apies
-extension ViewController{
+extension UserActivityViewController{
     
     func updateUi(list: [UserActivity]){
         userActivities.append(contentsOf: list)
@@ -49,10 +47,16 @@ extension ViewController{
             self.updateUi(list: dto.list)
         }
     }
+    
+    func startApies(){
+        LoginService.sharedInstance.login(){ [weak self] in
+            self?.loadUserActivities()
+        }
+    }
 }
 
 //MARK: CollectionView
-extension ViewController:UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+extension UserActivityViewController:UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -72,10 +76,20 @@ extension ViewController:UICollectionViewDataSource, UICollectionViewDelegate, U
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 400)
+        let width = collectionView.bounds.width
+        let hasAttender = userActivities[indexPath.item].hasAttender
+        return CGSize(width:  width, height: hasAttender ? 400: 400-40)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
     
