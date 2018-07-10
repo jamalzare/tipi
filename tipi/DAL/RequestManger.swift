@@ -109,7 +109,6 @@ class RequestManger<T: Model>{
         let json = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
         if (arrayParam.count) > 0 || (parameters.keys.count) > 0
         {
-            print(json ?? "")
             return json!.data(using: String.Encoding.utf8.rawValue)
         }
         return nil
