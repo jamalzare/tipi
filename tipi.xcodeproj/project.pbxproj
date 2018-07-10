@@ -27,6 +27,7 @@
 		8988C18220F09B830079193C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8988C18020F09B830079193C /* Main.storyboard */; };
 		8988C18420F09B830079193C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8988C18320F09B830079193C /* Assets.xcassets */; };
 		8988C18720F09B830079193C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8988C18520F09B830079193C /* LaunchScreen.storyboard */; };
+		89DEE7A220F48A9C00EAF3ED /* UserActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DEE7A120F48A9C00EAF3ED /* UserActivityService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		8988C18320F09B830079193C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8988C18620F09B830079193C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8988C18820F09B840079193C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89DEE7A120F48A9C00EAF3ED /* UserActivityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityService.swift; sourceTree = "<group>"; };
 		9959EC989B55A7701B92E98A /* Pods-tipi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tipi.release.xcconfig"; path = "Pods/Target Support Files/Pods-tipi/Pods-tipi.release.xcconfig"; sourceTree = "<group>"; };
 		C63AAF286B4BE662CB1A3088 /* Pods_tipi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tipi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				891FCC1E20F0A55500B6672F /* LoginService.swift */,
+				89DEE7A120F48A9C00EAF3ED /* UserActivityService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				891FCC1F20F0A55500B6672F /* LoginService.swift in Sources */,
 				891FCC1920F0A20300B6672F /* RequestManger.swift in Sources */,
 				891FCC1C20F0A47000B6672F /* Model.swift in Sources */,
+				89DEE7A220F48A9C00EAF3ED /* UserActivityService.swift in Sources */,
 				8944628E20F219DD0099FFA0 /* AppBundle.swift in Sources */,
 				891FCC2120F0A5A300B6672F /* Service.swift in Sources */,
 				891FCC3020F0FCF000B6672F /* Extension + Public.swift in Sources */,

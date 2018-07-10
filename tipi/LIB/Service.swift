@@ -7,7 +7,9 @@
 //
 
 import Foundation
+import Alamofire
 
 class Service{
     static func go(){}
+    static var methodType: HTTPMethod = HTTPMethod.get
 }

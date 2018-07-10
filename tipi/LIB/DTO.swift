@@ -14,6 +14,7 @@ class  DTO<T> { // Data Transfer Object
     var list = [T]()
     var message: String?
     var status :Bool?
+    var statusCode:Int?
     
     init(){}
     
@@ -22,7 +23,7 @@ class  DTO<T> { // Data Transfer Object
         self.status = status
         self.model = model
         self.message = message
-        self.status = status
+        
     }
     
     init(success:Bool, status:Bool, list:[T], message:String){
@@ -33,9 +34,10 @@ class  DTO<T> { // Data Transfer Object
         
     }
     
-    init(success: Bool, status:Bool) {
+    init(success: Bool, status:Bool, message:String, statusCode:Int) {
         self.success = success
         self.status = status
+        self.statusCode = statusCode
     }
     
     init(success: Bool, message:String) {

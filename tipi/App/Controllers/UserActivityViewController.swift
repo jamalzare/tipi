@@ -17,7 +17,7 @@ class UserActivityViewController: UIViewController {
     func setup(){
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(AppBundle.UserActiviyCellNib,forCellWithReuseIdentifier: "Cell")
+        collectionView.register(AppBundle.UserActiviyCellNib, forCellWithReuseIdentifier: "Cell")
         collectionView.contentInset = UIEdgeInsets.zero
         
         
@@ -28,7 +28,7 @@ class UserActivityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        startApies()
+        loadUserActivities()
         
     }
     
@@ -43,16 +43,11 @@ extension UserActivityViewController{
     }
     
     func loadUserActivities() {
-        LoginService.sharedInstance.getList{ dto in
+        UserActivityService.sharedInstance.getList{ dto in
             self.updateUi(list: dto.list)
         }
     }
     
-    func startApies(){
-        LoginService.sharedInstance.login(){ [weak self] in
-            self?.loadUserActivities()
-        }
-    }
 }
 
 //MARK: CollectionView
