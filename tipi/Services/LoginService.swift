@@ -19,7 +19,6 @@ class LoginService: Service{
         params["email"] = "jamalzare514@gmail.com"
         params["device"] = "ios"
         
-       
         RequestManger.handleRequest(api: "/v1/users/login", parameters: params, methodType: .post, arrayParam: []) { (status, json, message, code) in
             
             callback()

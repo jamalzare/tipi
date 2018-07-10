@@ -19,8 +19,6 @@ class UserActivityViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.register(AppBundle.UserActiviyCellNib, forCellWithReuseIdentifier: "Cell")
         collectionView.contentInset = UIEdgeInsets.zero
-        
-        
     }
     
     @IBOutlet weak var collectionView: UICollectionView!

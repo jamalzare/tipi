@@ -17,7 +17,6 @@ class UserActivityService: Service{
     func getList(callback:@escaping (DTO<UserActivity>)-> Void){
         
         let api = "/v1/user_activities?location[lat]=-33.868583&location[lon]=151.225348"
-        
         RequestManger<UserActivity>.listRequest(api: api,  methodType: .get){ dto in
             callback(dto)
         }

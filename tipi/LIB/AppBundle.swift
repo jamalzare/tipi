@@ -24,8 +24,8 @@ class AppBundle{
     }
     
     static func getController(bundleItem: BunldleItem)-> UIViewController{
-        let controller = UIApplication.getViewController(identifier: bundleItem.controllerIdentifier, stroyboard: bundleItem.storyboard) ?? UIViewController()
         
+        let controller = UIApplication.getViewController(identifier: bundleItem.controllerIdentifier, stroyboard: bundleItem.storyboard) ?? UIViewController()
         return controller
         
     }

@@ -10,9 +10,6 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-
-
-
 class RequestManger<T: Model>{
     
     static var serverRoot: String{

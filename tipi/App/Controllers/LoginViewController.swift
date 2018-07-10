@@ -37,14 +37,14 @@ class LoginViewController: UIViewController {
 //MARK:Apies
 extension LoginViewController{
     
-    func gotoUserActivities(){
+    func navigateToUserActivities(){
         navigationController?.pushViewController(AppBundle.UserActivityViewController, animated: true)
     }
     
     
     func login(){
         LoginService.sharedInstance.login(){ [weak self] in
-            self?.gotoUserActivities()
+            self?.navigateToUserActivities()
         }
     }
 }

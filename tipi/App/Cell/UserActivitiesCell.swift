@@ -56,7 +56,6 @@ class UserActivitiesCell: UICollectionViewCell {
     func setup(){
         imageView.setImageFromUrl(activity?.image, defaultImage: #imageLiteral(resourceName: "loadingImage.png"))
         titleLabel.text = activity?.title
-        atLabel.text = "15 Jul, 12:30"
         hasAttendeeds = activity?.hasAttender ?? false
         let count = activity?.attendees.count ?? 0
         for i in 0..<count{
