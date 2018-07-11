@@ -74,9 +74,6 @@ extension UserActivityViewController:UICollectionViewDataSource, UICollectionVie
         return CGSize(width:  width, height: hasAttender ? 400: 400-40)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
@@ -85,6 +82,11 @@ extension UserActivityViewController:UICollectionViewDataSource, UICollectionVie
         return 0
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = AppBundle.UserActivityDetailsController
+        controller.activityDocKey = userActivities[indexPath.item].docKey
+        navigationController?.pushViewController(controller, animated: true)
+    }
     
 }
 

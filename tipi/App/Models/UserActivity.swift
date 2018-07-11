@@ -41,10 +41,14 @@ class UserActivity: Model{
     }
     var attendees = [Attender]()
     
+    var userAvatar:String{
+        return "http://stg.api.tipi.me/cdn/user/\(userKey)/savatar.jpg"
+    }
+    
     required init(json: JSON) {
         super.init(json: json)
         
-        docKey  = json["docKey"].stringValue
+        docKey  = json["doc_key"].stringValue
         userKey = json["user_key"].stringValue
         title = json["title"].stringValue
         description = json["description"].stringValue

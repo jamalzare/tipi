@@ -44,6 +44,10 @@ extension AppBundle{
         return getController(bundleItem: UserActivity) as! UserActivityViewController
     }
     
+    class var UserActivityDetailsController: UserActivityDetailsViewController {
+        return  UserActivityDetailsViewController()
+    }
+    
 }
 
 //MARK: nib files

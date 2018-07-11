@@ -22,4 +22,12 @@ class UserActivityService: Service{
         }
     }
     
+    func getUserActivitDetails(docKey:String, callback:@escaping (DTO<UserActivity>)-> Void){
+        
+        let api = "/v1/user_activities/\(docKey)"
+        RequestManger<UserActivity>.modelRequest(api: api,  methodType: .get){ dto in
+            callback(dto)
+        }
+    }
+    
 }
