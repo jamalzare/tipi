@@ -151,7 +151,8 @@ extension UserActivityDetailsViewController: UICollectionViewDelegate, UICollect
     
     func dequeueMapCell(collectionView: UICollectionView, indexPath: IndexPath)-> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MapCell", for: indexPath) as! MapCell
-        //cell.attenders = userActivityDetail?.attendees ?? []
+        cell.activity = self.userActivityDetail
+        
         return cell
     }
     
@@ -196,7 +197,8 @@ extension UserActivityDetailsViewController: UICollectionViewDelegate, UICollect
         case 0:
             return calculateSizeForDetailCell(collectionView: collectionView)
         case 1:
-            return CGSize(width: collectionView.frame.width, height: 238)
+            let height:CGFloat = (userActivityDetail?.attendees.count ?? 0) > 0 ? 238:0
+            return CGSize(width: collectionView.frame.width, height: height)
         case 2:
             return CGSize(width: collectionView.frame.width, height: 232)
         default:

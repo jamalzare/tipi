@@ -9,6 +9,19 @@
 import Foundation
 import SwiftyJSON
 
+
+class Location: Model {
+    var lat = ""
+    var lon = ""
+    
+    required init(json: JSON) {
+        super.init(json: json)
+        
+        lat = json["lat"].stringValue
+        lon = json["lon"].stringValue
+    }
+}
+
 class Attender: Model {
     
     var userKey = ""
@@ -30,12 +43,11 @@ class Attender: Model {
 }
 
 class UserActivity: Model{
-   
+    
     var docKey: String = ""
     var userKey:String = ""
     var title: String?
     var description:String?
-    var location: String?
     var image: String?
     var at: String?
     var address:String?
@@ -44,6 +56,7 @@ class UserActivity: Model{
         return attendees.count > 0
     }
     var attendees = [Attender]()
+    var location: Location?
     
     var userAvatar:String{
         return "http://stg.api.tipi.me/cdn/user/\(userKey)/savatar.jpg"
@@ -62,5 +75,6 @@ class UserActivity: Model{
         address = json["address"].stringValue
         hasAttended = json["has_attended"].boolValue
         attendees = json["attendees"].arrayValue.map{ Attender(json: $0)}
+        location = Location(json: json["location"])
     }
 }

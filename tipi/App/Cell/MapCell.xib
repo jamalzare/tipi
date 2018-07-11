@@ -44,6 +44,9 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="316" height="371"/>
+            <connections>
+                <outlet property="mapView" destination="1He-rk-GbK" id="mgg-nM-cgk"/>
+            </connections>
             <point key="canvasLocation" x="167" y="231.5"/>
         </collectionViewCell>
     </objects>
