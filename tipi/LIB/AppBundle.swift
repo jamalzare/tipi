@@ -56,5 +56,17 @@ extension AppBundle{
     class var UserActiviyCellNib: UINib{
        return UINib(nibName: "UserActivitiesCell", bundle: nil) 
     }
+    
+    class var AttendersCellNib: UINib{
+        return UINib(nibName: "AttendersCell", bundle: nil)
+    }
+    
+    class var AttenderCellNib: UINib{
+        return UINib(nibName: "AttenderCell", bundle: nil)
+    }
+    
+    class var MapCellNib: UINib{
+        return UINib(nibName: "MapCell", bundle: nil)
+    }
 
 }

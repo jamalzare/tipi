@@ -32,24 +32,28 @@ class UserActivityDetailsViewController: UIViewController{
         return cv
     }()
     
+    let goingBtn:UIButton = {
+        let btn = UIButton()
+        btn.titleLabel?.text = "GOING!"
+        btn.backgroundColor =  UIColor(red:1, green:0.18, blue:0.33, alpha:1)
+        btn.contentMode = .center
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }()
+    
     
     func registerCells(){
         collectionView.register(UserActivityHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "HeaderCell")
         collectionView.register(UserActivityDetailCell.self, forCellWithReuseIdentifier: "DetailCell")
+        collectionView.register(AppBundle.AttendersCellNib, forCellWithReuseIdentifier: "AttendersCell")
+        collectionView.register(AppBundle.MapCellNib, forCellWithReuseIdentifier: "MapCell")
         
-    }
-    
-    func addConstaraints(){
         
-        let safeArea = view.safeAreaLayoutGuide
-        collectionView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor).isActive = true
-        collectionView.leftAnchor.constraint(equalTo: safeArea.leftAnchor).isActive = true
-        collectionView.rightAnchor.constraint(equalTo: safeArea.rightAnchor).isActive = true
     }
     
     func setup(){
         view.addSubview(collectionView)
+        view.addSubview(goingBtn)
         registerCells()
         addConstaraints()
         
@@ -63,6 +67,34 @@ class UserActivityDetailsViewController: UIViewController{
         setup()
         loadUserActivity()
         
+    }
+    
+}
+
+//MARK: constraints
+extension UserActivityDetailsViewController{
+ 
+    
+    func setCollectionViewConstraints(){
+        let safeArea = view.safeAreaLayoutGuide
+        collectionView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: safeArea.leftAnchor).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: safeArea.rightAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -50).isActive = true
+        
+    }
+    
+    func setGoingBtnConstraints(){
+        let safeArea = view.safeAreaLayoutGuide
+        goingBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        goingBtn.leftAnchor.constraint(equalTo: safeArea.leftAnchor).isActive = true
+        goingBtn.rightAnchor.constraint(equalTo: safeArea.rightAnchor).isActive = true
+        goingBtn.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
+    }
+    
+    func addConstaraints(){
+        setCollectionViewConstraints()
+        setGoingBtnConstraints()
     }
     
 }
@@ -88,7 +120,7 @@ extension UserActivityDetailsViewController{
 extension UserActivityDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 3
     }
     
     
@@ -103,18 +135,42 @@ extension UserActivityDetailsViewController: UICollectionViewDelegate, UICollect
         return CGSize(width: collectionView.bounds.width, height: 375)
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
-    {
-        let identifier = "DetailCell"
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! UserActivityDetailCell
+    func dequeueDetailCell(collectionView: UICollectionView, indexPath: IndexPath)-> UICollectionViewCell{
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailCell", for: indexPath) as! UserActivityDetailCell
         cell.detail = userActivityDetail
         return cell
     }
     
+    func dequeueAttendersCell(collectionView: UICollectionView, indexPath: IndexPath)-> UICollectionViewCell{
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AttendersCell", for: indexPath) as! AttendersCell
+        cell.attenders = userActivityDetail?.attendees ?? []
+        return cell
+    }
     
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func dequeueMapCell(collectionView: UICollectionView, indexPath: IndexPath)-> UICollectionViewCell{
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MapCell", for: indexPath) as! MapCell
+        //cell.attenders = userActivityDetail?.attendees ?? []
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    {
         
+        switch indexPath.item {
+        case 0:
+            return dequeueDetailCell(collectionView: collectionView, indexPath: indexPath)
+            
+        case 1:
+            return dequeueAttendersCell(collectionView: collectionView, indexPath: indexPath)
+        case 2:
+            return dequeueMapCell(collectionView: collectionView, indexPath: indexPath)
+        default:
+            return UICollectionViewCell()
+        }
+    }
+    
+    func calculateSizeForDetailCell(collectionView:UICollectionView)-> CGSize{
         let width = collectionView.bounds.width
         var height:CGFloat = 120
         
@@ -131,6 +187,20 @@ extension UserActivityDetailsViewController: UICollectionViewDelegate, UICollect
         
         
         return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        switch indexPath.item {
+        case 0:
+            return calculateSizeForDetailCell(collectionView: collectionView)
+        case 1:
+            return CGSize(width: collectionView.frame.width, height: 238)
+        case 2:
+            return CGSize(width: collectionView.frame.width, height: 232)
+        default:
+            return CGSize.zero
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){

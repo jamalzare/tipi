@@ -11,7 +11,7 @@ import Kingfisher
 
 extension UIImageView{
     
-    public func setImageFromUrl(_ urlString:String?, defaultImage:UIImage? = nil)
+    public func setImageFromUrl(_ urlString:String?, defaultImage:UIImage? = #imageLiteral(resourceName: "loadingImage.png"))
     {
         let str = urlString ?? ""
         

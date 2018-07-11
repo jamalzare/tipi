@@ -13,6 +13,8 @@ class Attender: Model {
     
     var userKey = ""
     var attendedAt: String?
+    var name: String?
+    var city: String?
     var avatar:String{
         return "http://stg.api.tipi.me/cdn/user/\(userKey)/savatar.jpg"
     }
@@ -22,6 +24,8 @@ class Attender: Model {
         
         userKey = json["user_key"].stringValue
         attendedAt = json["attended_at"].stringValue
+        name = json["name"].stringValue
+        city = json["city"].stringValue
     }
 }
 

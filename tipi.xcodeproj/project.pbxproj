@@ -32,6 +32,12 @@
 		89BFBD2F20F4F8EB009FD68C /* Extension + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BFBD2E20F4F8EB009FD68C /* Extension + UIView.swift */; };
 		89BFBD3120F4FBF4009FD68C /* UserActivityHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BFBD3020F4FBF4009FD68C /* UserActivityHeaderCell.swift */; };
 		89BFBD3320F53B7A009FD68C /* UserActivityDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BFBD3220F53B7A009FD68C /* UserActivityDetailCell.swift */; };
+		89BFBD3620F5EBE1009FD68C /* AttendersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BFBD3420F5EBE1009FD68C /* AttendersCell.swift */; };
+		89BFBD3720F5EBE1009FD68C /* AttendersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89BFBD3520F5EBE1009FD68C /* AttendersCell.xib */; };
+		89BFBD3A20F5EF71009FD68C /* AttenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BFBD3820F5EF71009FD68C /* AttenderCell.swift */; };
+		89BFBD3B20F5EF71009FD68C /* AttenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89BFBD3920F5EF71009FD68C /* AttenderCell.xib */; };
+		89BFBD3E20F5F920009FD68C /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BFBD3C20F5F91F009FD68C /* MapCell.swift */; };
+		89BFBD3F20F5F920009FD68C /* MapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89BFBD3D20F5F91F009FD68C /* MapCell.xib */; };
 		89DEE7A220F48A9C00EAF3ED /* UserActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DEE7A120F48A9C00EAF3ED /* UserActivityService.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +69,12 @@
 		89BFBD2E20F4F8EB009FD68C /* Extension + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIView.swift"; sourceTree = "<group>"; };
 		89BFBD3020F4FBF4009FD68C /* UserActivityHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityHeaderCell.swift; sourceTree = "<group>"; };
 		89BFBD3220F53B7A009FD68C /* UserActivityDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityDetailCell.swift; sourceTree = "<group>"; };
+		89BFBD3420F5EBE1009FD68C /* AttendersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendersCell.swift; sourceTree = "<group>"; };
+		89BFBD3520F5EBE1009FD68C /* AttendersCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttendersCell.xib; sourceTree = "<group>"; };
+		89BFBD3820F5EF71009FD68C /* AttenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttenderCell.swift; sourceTree = "<group>"; };
+		89BFBD3920F5EF71009FD68C /* AttenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttenderCell.xib; sourceTree = "<group>"; };
+		89BFBD3C20F5F91F009FD68C /* MapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
+		89BFBD3D20F5F91F009FD68C /* MapCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapCell.xib; sourceTree = "<group>"; };
 		89DEE7A120F48A9C00EAF3ED /* UserActivityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityService.swift; sourceTree = "<group>"; };
 		9959EC989B55A7701B92E98A /* Pods-tipi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tipi.release.xcconfig"; path = "Pods/Target Support Files/Pods-tipi/Pods-tipi.release.xcconfig"; sourceTree = "<group>"; };
 		C63AAF286B4BE662CB1A3088 /* Pods_tipi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tipi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +121,12 @@
 				891FCC2420F0D9DF00B6672F /* UserActivitiesCell.xib */,
 				89BFBD3020F4FBF4009FD68C /* UserActivityHeaderCell.swift */,
 				89BFBD3220F53B7A009FD68C /* UserActivityDetailCell.swift */,
+				89BFBD3420F5EBE1009FD68C /* AttendersCell.swift */,
+				89BFBD3520F5EBE1009FD68C /* AttendersCell.xib */,
+				89BFBD3820F5EF71009FD68C /* AttenderCell.swift */,
+				89BFBD3920F5EF71009FD68C /* AttenderCell.xib */,
+				89BFBD3C20F5F91F009FD68C /* MapCell.swift */,
+				89BFBD3D20F5F91F009FD68C /* MapCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -292,9 +310,12 @@
 			files = (
 				8988C18720F09B830079193C /* LaunchScreen.storyboard in Resources */,
 				8988C18420F09B830079193C /* Assets.xcassets in Resources */,
+				89BFBD3F20F5F920009FD68C /* MapCell.xib in Resources */,
+				89BFBD3720F5EBE1009FD68C /* AttendersCell.xib in Resources */,
 				8988C18220F09B830079193C /* Main.storyboard in Resources */,
 				891FCC2620F0D9DF00B6672F /* UserActivitiesCell.xib in Resources */,
 				8944628920F215370099FFA0 /* loadingImage.png in Resources */,
+				89BFBD3B20F5EF71009FD68C /* AttenderCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +384,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89BFBD3E20F5F920009FD68C /* MapCell.swift in Sources */,
 				8944628C20F217D20099FFA0 /* LoginViewController.swift in Sources */,
 				8988C17F20F09B830079193C /* UserActivityViewController.swift in Sources */,
 				891FCC2920F0DC3F00B6672F /* UserActivity.swift in Sources */,
@@ -373,7 +395,9 @@
 				8988C17D20F09B830079193C /* AppDelegate.swift in Sources */,
 				891FCC1F20F0A55500B6672F /* LoginService.swift in Sources */,
 				891FCC1920F0A20300B6672F /* RequestManger.swift in Sources */,
+				89BFBD3620F5EBE1009FD68C /* AttendersCell.swift in Sources */,
 				891FCC1C20F0A47000B6672F /* Model.swift in Sources */,
+				89BFBD3A20F5EF71009FD68C /* AttenderCell.swift in Sources */,
 				89DEE7A220F48A9C00EAF3ED /* UserActivityService.swift in Sources */,
 				8944628E20F219DD0099FFA0 /* AppBundle.swift in Sources */,
 				891FCC2120F0A5A300B6672F /* Service.swift in Sources */,

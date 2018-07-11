@@ -22,6 +22,7 @@ class UserActivityHeaderCell: BaseCell{
         iv.contentMode = .scaleAspectFill
         iv.backgroundColor = .green
         iv.clipsToBounds = true
+        iv.image = #imageLiteral(resourceName: "loadingImage.png")
         return iv
     }()
     
