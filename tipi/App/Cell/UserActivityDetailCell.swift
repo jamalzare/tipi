@@ -19,7 +19,9 @@ class UserActivityDetailCell: BaseCell {
     }
     
     let headView:UIView = {
-        return UIView()
+        let v = UIView()
+        v.backgroundColor = .white
+        return v
     }()
     
     let imageView: UIImageView = {
@@ -81,6 +83,7 @@ class UserActivityDetailCell: BaseCell {
     }
     
     func design(){
+        backgroundColor = .white
         imageView.layer.cornerRadius = imageView.bounds.height/2
     }
     

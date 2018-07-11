@@ -14,8 +14,8 @@ class UserActivityDetailsViewController: UIViewController{
     var activityDocKey: String?
     var userActivityDetail: UserActivity?
     
-    let collectionViewLayout: UICollectionViewLayout = {
-        let layout = UICollectionViewFlowLayout()
+    let collectionViewLayout: UserActivityHeaderLayout = {
+        let layout = UserActivityHeaderLayout()
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .vertical
@@ -34,9 +34,10 @@ class UserActivityDetailsViewController: UIViewController{
     
     let goingBtn:UIButton = {
         let btn = UIButton()
-        btn.titleLabel?.text = "GOING!"
-        btn.backgroundColor =  UIColor(red:1, green:0.18, blue:0.33, alpha:1)
+        btn.setTitle("GOING!", for: .normal)
         btn.contentMode = .center
+        btn.setTitleColor(.white, for: .normal)
+        btn.backgroundColor = UIColor(red:0, green:195/255, blue:206/255, alpha:1)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()

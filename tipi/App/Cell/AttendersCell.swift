@@ -20,6 +20,7 @@ class AttendersCell: UICollectionViewCell {
     }
     
     func  design()  {
+        backgroundColor = .white
         linkLabel.textColor = UIColor(red:1, green:0.18, blue:0.33, alpha:1)
     }
     

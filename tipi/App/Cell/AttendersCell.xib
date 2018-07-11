@@ -73,6 +73,7 @@
                     </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="yf8-2e-Vb7" secondAttribute="bottom" constant="20" id="TP2-PW-RRc"/>
                 <constraint firstAttribute="trailing" secondItem="yf8-2e-Vb7" secondAttribute="trailing" id="is4-Kj-0fD"/>

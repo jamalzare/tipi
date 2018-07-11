@@ -20,9 +20,11 @@ class UserActivityHeaderCell: BaseCell{
     let imageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
+        iv.layer.masksToBounds = true
         iv.backgroundColor = .green
         iv.clipsToBounds = true
         iv.image = #imageLiteral(resourceName: "loadingImage.png")
+        
         return iv
     }()
     
@@ -34,6 +36,8 @@ class UserActivityHeaderCell: BaseCell{
     
     func design(){
         self.backgroundColor = .red
+        
+
     }
     
     override func layoutSubviews() {
@@ -46,4 +50,55 @@ class UserActivityHeaderCell: BaseCell{
         addSubview(imageView)
         addConstraints()
     }
+    
+    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
+        super.apply(layoutAttributes)
+        self.layer.zPosition = -1
+    }
+    
+}
+
+class UserActivityHeaderLayout: UICollectionViewFlowLayout{
+    
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        let layoutAttributes = super.layoutAttributesForElements(in: rect)
+        let offsetY = collectionView!.contentOffset.y
+        let delta = abs(offsetY)
+        
+        for attr in layoutAttributes!{
+            if let elementKind = attr.representedElementKind{
+                
+                if elementKind == UICollectionElementKindSectionHeader{
+                    
+                    var frame = attr.frame
+                    if offsetY<0{
+                        frame.size.height = max(0, frame.size.height + delta)
+                        frame.origin.y = frame.minY - delta
+                    }else{
+                        frame.origin.y = frame.minY + (delta/2)
+                        attr.zIndex = -1
+                    }
+                    attr.frame = frame
+                    
+                }
+            }
+        }
+        return layoutAttributes
+    }
+//
+//    override func prepare() {
+//        super.prepare()
+//
+//        for item in 0..<collectionView!.numberOfItems(inSection: 0){
+//
+//            let indexPath = IndexPath(row: item, section: 0)
+//            let attributes = layoutAttributesForItem(at: indexPath)
+//            attributes?.zIndex = item
+//        }
+//    }
+    
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        return true
+    }
+    
 }
